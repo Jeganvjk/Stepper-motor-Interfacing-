@@ -28,7 +28,34 @@ Step13:Click start button and check the output
 
 ## PROGRAM:
 
+#include <Stepper.h></br>
+const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution</br>
+// for your motor</br>
+
+// initialize the stepper library on pins 8 through 11:</br>
+Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);</br>
+
+void setup() {</br>
+  // set the speed at 60 rpm:</br>
+  myStepper.setSpeed(60);</br>
+  // initialize the serial port:</br>
+  Serial.begin(9600);</br>
+}</br>
+
+void loop() {</br>
+  // step one revolution  in one direction:</br>
+  Serial.println("clockwise");</br>
+  myStepper.step(stepsPerRevolution);</br>
+  delay(500);</br>
+
+  // step one revolution in the other direction:</br>
+  Serial.println("counterclockwise");</br>
+  myStepper.step(-stepsPerRevolution);</br>
+  delay(500);</br>
+}</br>
+
 ## CIRCUIT DIAGRAM:
+![Uploading Stepper.jpeg…]()
 
 ## OUTPUT:
 
